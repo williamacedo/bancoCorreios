@@ -1,0 +1,48 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Correios</ui:define>
+
+	<ui:define name="corpo">
+		<h:form>
+			<h1 style="text-align: center; padding: 20px; font-size: 30px;">Pesquisa</h1>
+
+			<p:outputLabel value="CEP" for="cep"
+				style="padding-right:5px; font-size:17px" />
+			<p:inputText id="cep" size="20"
+				value="#{pesquisaCorreiosBean.filtro.cep}" />
+
+			<p:commandButton value="Pesquisar" style="padding-left:5px;"
+				action="#{pesquisaCorreiosBean.pesquisar}" update="@form" />
+
+
+			<p:dataTable value="#{pesquisaCorreiosBean.buscaRealizada}"
+				var="correio" style="margin-top: 20px">
+				<p:column headerText="Estado"
+					style="text-align: center; width: 100px">
+					<h:outputText />
+				</p:column>
+				<p:column headerText="UF">
+					<h:outputText />
+				</p:column>
+				<p:column headerText="Cidade">
+					<h:outputText />
+				</p:column>
+				<p:column headerText="Bairro">
+					<h:outputText value="#{correio.nome}" />
+				</p:column>
+				<p:column headerText="Logradouro">
+					<h:outputText value="#{correio.logradouro}" />
+				</p:column>
+				<p:column headerText="CEP">
+					<h:outputText value="#{correio.cep}" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

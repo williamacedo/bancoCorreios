@@ -1,0 +1,53 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="titulo">Correios</ui:define>
+
+	<ui:define name="corpo">
+		<h:form>
+			<h1 style="text-align: center; padding-top: 20px; font-size: 30px;">Correios</h1>
+			<br />
+			<p:messages autoUpdate="true" closable="true" />
+			<p:panel>
+
+				<h:panelGrid columns="3" cellpadding="5">
+
+					<p:outputLabel for="est" value="Estado" />
+					<p:inputText id="est" required="true" />
+					<br />
+					<p:outputLabel for="uf" value="UF" />
+					<p:inputText id="uf" required="true" />
+					<br />
+					<p:outputLabel for="cid" value="Cidade" />
+					<p:inputText id="cid" required="true" />
+					<br />
+
+					<p:outputLabel for="bai" value="Bairro" />
+					<p:inputText id="bai" required="true"
+						value="#{cadastroCorreiosBean.bairro.nome}" />
+					<br />
+
+					<p:outputLabel for="cep" value="CEP" />
+					<p:inputText id="cep" required="true"
+						value="#{cadastroCorreiosBean.bairro.endereco.cep}" />
+					<br />
+					<p:outputLabel for="log" value="Logradouro" />
+					<p:inputText id="log" required="true"
+						value="#{cadastroCorreiosBean.bairro.endereco.logradouro}" />
+					<br />
+				</h:panelGrid>
+			</p:panel>
+			<br />
+			<p:toolbarGroup>
+				<p:commandButton value="Salvar" id="botaoSalvar"
+					action="#{cadastroCorreiosBean.salvar}" update="@form" />
+			</p:toolbarGroup>
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>
