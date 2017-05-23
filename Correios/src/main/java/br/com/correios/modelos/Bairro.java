@@ -1,8 +1,6 @@
 package br.com.correios.modelos;
 
 import java.io.Serializable;
-
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,8 +17,6 @@ public class Bairro implements Serializable {
 	private Long id;
 	private String nome;
 	private Cidade cidade;
-	private Endereco endereco;
-	private Estado estado;
 
 	@Id
 	@GeneratedValue
@@ -48,25 +44,6 @@ public class Bairro implements Serializable {
 
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "id_estado", nullable = false)
-	public Estado getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Estado estado) {
-		this.estado = estado;
-	}
-
-	@Embedded
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
 	}
 
 	@Override
